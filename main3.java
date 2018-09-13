@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class main3 {
 
-	static int lineCount = 0;
 	static File name = new File("input3.txt");
 	static ArrayList<String> lines = new ArrayList<String>();
 	static ArrayList<Integer> numbers = new ArrayList<Integer>();
@@ -54,7 +53,6 @@ public class main3 {
 			String text, output="";
 			while ((text=input.readLine())!=null) {
 				lines.add(text);
-				lineCount++;
 			}
 			for (String s : lines) {
 				numbers = new ArrayList<Integer>();
