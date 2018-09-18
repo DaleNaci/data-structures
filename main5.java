@@ -30,12 +30,12 @@ public class main5 {
 	}
 
 	public static void findWinner() {
-		for (int x=0;x<3;x++)
+		for (int x=0;x<3;x++) {
 			if (b[x][0]==b[x][1] && b[x][1]==b[x][2])
 				winner = (b[x][0]==1) ? "X" : "O";
-		for (int y=0;y<3;y++) 
-			if (b[0][y]==b[1][y] && b[1][y]==b[2][y])
-				winner = (b[0][y]==1) ? "X" : "O";
+			if (b[0][x]==b[1][x] && b[1][x]==b[2][x])
+				winner = (b[0][x]==1) ? "X" : "O";
+		}
 		if (b[0][0]==b[1][1] && b[1][1]==b[2][2])
 			winner = (b[0][0]==1) ? "X" : "O";
 		if (b[0][2]==b[1][1] && b[1][1]==b[2][0])
@@ -57,12 +57,6 @@ public class main5 {
 				findWinner();
 				System.out.println(winner);
 				line+=3;
-			}
-			for (int[] i : b) {
-				for (int j : i) {
-					System.out.print(j);
-				}
-				System.out.println();
 			}
 		} catch (IOException io) {
 			System.err.println("File not found.");
