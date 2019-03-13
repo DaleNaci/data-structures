@@ -4,68 +4,69 @@ import java.awt.*;
 import java.util.*;
 
 public class gui extends JPanel implements ActionListener {
-	JFrame frame;
-	JMenu font, fontSize, textColor, background, outline;
-    JMenuBar menuBar;
-	JButton north, south, east, west;
-	JPanel buttonPanel;
-	JTextArea area;
-    JMenuItem font1, font2, font3;
-    JMenuItem size1, size2, size3;
-    JMenuItem color1, color2, color3;
-    JMenuItem background1, background2, background3;
-    JMenuItem outline1, outline2, outline3, outline4;
-    int size;
-    JMenu[] menuArr;
-    JButton[] buttonArr;
+	JFrame 		frame;
+	JMenu 		font, fontSize, textColor, background, outline;
+    JMenuBar 	menuBar;
+	JButton 	north, south, east, west, reset;
+	JPanel 		buttonPanel;
+	JTextArea 	area;
+    JMenuItem 	font1, font2, font3;
+    JMenuItem 	size1, size2, size3;
+    JMenuItem 	color1, color2, color3;
+    JMenuItem 	background1, background2, background3;
+    JMenuItem 	outline1, outline2, outline3, outline4;
+    int 		size;
+    JMenu[] 	menuArr;
+    JButton[] 	buttonArr;
     JMenuItem[] itemArr;
+	String		fontName;
 
 
 	public gui() {
 		frame = new JFrame();
-		frame.add(this);
 
-        north   = new JButton("NORTH");
-        south   = new JButton("SOUTH");
-        east    = new JButton("EAST");
-        west    = new JButton("WEST");
+		buttonPanel	= new JPanel();
 
-        buttonPanel =   new JPanel();
-        menuBar     =   new JMenuBar();
+        north   =	new JButton( "NORTH" );
+        south   =	new JButton( "SOUTH" );
+        east    =	new JButton(  "EAST" );
+        west    =	new JButton(  "WEST" );
+		reset	=	new JButton( "RESET" );
 
-        font        =   new JMenu("Fonts");
-        fontSize    =   new JMenu("Sizes");
-        textColor   =   new JMenu("Color");
-        background  =   new JMenu("Background");
-        outline     =   new JMenu("Outline");
+        menuBar	=	new JMenuBar();
 
-        font1   =   new JMenuItem("Arial");
-        font2   =   new JMenuItem("Times New Roman");
-        font3   =   new JMenuItem("Cambria");
+        font        =   new JMenu(      "Fonts" );
+        fontSize    =   new JMenu(      "Sizes" );
+        textColor   =   new JMenu(      "Color" );
+        background  =   new JMenu( "Background" );
+        outline     =   new JMenu(    "Outline" );
 
-        size1   =   new JMenuItem("size 1");
-        size2   =   new JMenuItem("size 2");
-        size3   =   new JMenuItem("size 3");
+        font1   =   new JMenuItem(           "Arial" );
+        font2   =   new JMenuItem( "Times New Roman" );
+        font3   =   new JMenuItem(         "Cambria" );
 
-        color1  =   new JMenuItem("Red");
-        color2  =   new JMenuItem("Blue");
-        color3  =   new JMenuItem("Random");
+        size1   =   new JMenuItem( "10" );
+        size2   =   new JMenuItem( " 5" );
+        size3   =   new JMenuItem( "12" );
 
-        background1 =   new JMenuItem("Red");
-        background2 =   new JMenuItem("Blue");
-        background3 =   new JMenuItem("Random");
+        color1  =   new JMenuItem(    "Red" );
+        color2  =   new JMenuItem(   "Blue" );
+        color3  =   new JMenuItem( "Random" );
 
-        outline1    =   new JMenuItem("No Color");
-        outline2    =   new JMenuItem("Red");
-        outline3    =   new JMenuItem("Blue");
-        outline4    =   new JMenuItem("Random");
+        background1 =   new JMenuItem(    "Red" );
+        background2 =   new JMenuItem(   "Blue" );
+        background3 =   new JMenuItem( "Random" );
 
-        size = 12;
+        outline1    =   new JMenuItem( "No Color" );
+        outline2    =   new JMenuItem(      "Red" );
+        outline3    =   new JMenuItem(     "Blue" );
+        outline4    =   new JMenuItem(   "Random" );
 
-        menuArr     =   new JMenu[] {font, fontSize, textColor, background, outline};
-        buttonArr   =   new JButton[] {north, south, east, west};
+        menuArr     =   new JMenu[] 	{font, fontSize, textColor, background, outline};
+        buttonArr   =   new JButton[]   {north, south, east, west, reset};
         itemArr     =   new JMenuItem[] {font1, font2, font3, size1, size2, size3, color1, color2, color3, background1, background2, background3, outline1, outline2, outline3, outline4};
 
+		frame.add(this);
 
         font.add(font1);
         font.add(font2);
@@ -111,30 +112,34 @@ public class gui extends JPanel implements ActionListener {
 
         north.addActionListener(this);
         south.addActionListener(this);
-        east.addActionListener(this);
-        west.addActionListener(this);
+        east .addActionListener(this);
+        west .addActionListener(this);
+		reset.addActionListener(this);
 
-        menuBar.add(font);
-        menuBar.add(fontSize);
-        menuBar.add(textColor);
-        menuBar.add(background);
-        menuBar.add(outline);
+        menuBar.add(       font );
+        menuBar.add(   fontSize );
+        menuBar.add(  textColor );
+        menuBar.add( background );
+        menuBar.add(    outline );
 
 
-        north.setPreferredSize(new Dimension(10, 10));
-        south.setPreferredSize(new Dimension(10, 10));
-        east.setPreferredSize(new Dimension(10, 10));
-        west.setPreferredSize(new Dimension(10, 10));
+        north.setPreferredSize( new Dimension(10, 10) );
+        south.setPreferredSize( new Dimension(10, 10) );
+        east.setPreferredSize(  new Dimension(10, 10) );
+        west.setPreferredSize(  new Dimension(10, 10) );
 
 
         menuBar.setLayout(new GridLayout(1, 5));
 
-        buttonPanel.setLayout(new GridLayout(1, 5));
-        buttonPanel.add(north);
-        buttonPanel.add(south);
-        buttonPanel.add(east);
-        buttonPanel.add(west);
-        buttonPanel.add(menuBar);
+        buttonPanel.setLayout(new GridLayout(1, 6));
+        buttonPanel.add(   north );
+        buttonPanel.add(   south );
+        buttonPanel.add(    east );
+        buttonPanel.add(    west );
+		buttonPanel.add(   reset );
+        buttonPanel.add( menuBar );
+
+		restart();
 
         frame.add(buttonPanel, BorderLayout.NORTH);
 
@@ -145,62 +150,71 @@ public class gui extends JPanel implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == east) {
+        if (Arrays.asList(buttonArr).indexOf(e.getSource()) != -1 && e.getSource() != reset) {
+
+            double x = 0.0;
+            String text = ((JButton)(e.getSource())).getText();
+            switch (text) {
+                case "NORTH":   x =  2.5; break;
+                case "SOUTH":   x =  2.5; break;
+                case  "EAST":   x = -2.5; break;
+                case  "WEST":   x = -2.5; break;
+            }
+
             frame.remove(buttonPanel);
-            buttonPanel.setLayout(new GridLayout(5, 1));
+            buttonPanel.setLayout( new GridLayout((int)(3.5 - x), (int)(3.5 + x)) );
+			menuBar.    setLayout( new GridLayout((int)(3.5 - x), (int)(3.5 + x)) );
             buttonPanel.add(menuBar);
-            menuBar.setLayout(new GridLayout(5, 1));
-            frame.add(buttonPanel, BorderLayout.EAST);
-        } else if (e.getSource() == south) {
-            frame.remove(buttonPanel);
-            buttonPanel.setLayout(new GridLayout(1, 5));
-            buttonPanel.add(menuBar);
-            menuBar.setLayout(new GridLayout(1, 5));
-            frame.add(buttonPanel, BorderLayout.SOUTH);
-        } else if (e.getSource() == north) {
-            frame.remove(buttonPanel);
-            buttonPanel.setLayout(new GridLayout(1, 5));
-            buttonPanel.add(menuBar);
-            menuBar.setLayout(new GridLayout(1, 5));
-            frame.add(buttonPanel, BorderLayout.NORTH);
-        } else if (e.getSource() == west) {
-            frame.remove(buttonPanel);
-            buttonPanel.setLayout(new GridLayout(5, 1));
-            buttonPanel.add(menuBar);
-            menuBar.setLayout(new GridLayout(5, 1));
-            frame.add(buttonPanel, BorderLayout.WEST);
+
+            switch (text) {
+                case "NORTH":   frame.add( buttonPanel, BorderLayout.NORTH ); break;
+                case "SOUTH":   frame.add( buttonPanel, BorderLayout.SOUTH ); break;
+                case  "EAST":   frame.add( buttonPanel, BorderLayout. EAST ); break;
+                case  "WEST":   frame.add( buttonPanel, BorderLayout. WEST ); break;
+            }
         }
 
-        if (e.getSource() == font1) {
-            font(1);
-        } else if (e.getSource() == font2) {
-            font(2);
-        } else if (e.getSource() == font3) {
-            font(3);
-        }
 
+		if (e.getSource() == font1) fontName =           "Arial";
+		if (e.getSource() == font2) fontName = "Times New Roman";
+		if (e.getSource() == font3) fontName =         "Cambria";
+
+		if (e.getSource() == size1) size = 10;
+		if (e.getSource() == size2) size =  5;
+		if (e.getSource() == size3) size = 12;
+
+		for (JMenu     menu :   menuArr) { menu.  setFont(new Font(fontName, Font.PLAIN, size)); }
+        for (JButton button : buttonArr) { button.setFont(new Font(fontName, Font.PLAIN, size)); }
+        for (JMenuItem item :   itemArr) { item.  setFont(new Font(fontName, Font.PLAIN, size)); }
+
+		font1.setFont(new Font(			 "Arial", Font.PLAIN, size));
+		font2.setFont(new Font("Times New Roman", Font.PLAIN, size));
+		font3.setFont(new Font(		   "Cambria", Font.PLAIN, size));
+
+
+		if (e.getSource() == reset) restart();
 
         frame.revalidate();
 	}
 
-    public void font(int fontNumber) {
-        String fontName = "";
-        switch(fontNumber) {
-            case 1: fontName = "Arial";             break;
-            case 2: fontName = "Times New Roman";   break;
-            case 3: fontName = "Cambria";           break;
-        }
+	public void restart() {
+		fontName = "Arial";
+		size 	 = 		12;
 
-        for (JMenu menu : menuArr) {
-            menu.setFont(new Font(fontName, Font.PLAIN, size));
-        }
-        for (JButton button : buttonArr) {
-            button.setFont(new Font(fontName, Font.PLAIN, size));
-        }
-        for (JMenuItem item : itemArr) {
-            item.setFont(new Font(fontName, Font.PLAIN, size));
-        }
-    }
+		for (JMenu     menu :   menuArr) { menu.  setFont(new Font(fontName, Font.PLAIN, size)); }
+        for (JButton button : buttonArr) { button.setFont(new Font(fontName, Font.PLAIN, size)); }
+        for (JMenuItem item :   itemArr) { item.  setFont(new Font(fontName, Font.PLAIN, size)); }
+
+		font1.setFont(new Font(			 "Arial", Font.PLAIN, size));
+		font2.setFont(new Font("Times New Roman", Font.PLAIN, size));
+		font3.setFont(new Font(		   "Cambria", Font.PLAIN, size));
+
+		frame.remove(buttonPanel);
+		buttonPanel.setLayout(new GridLayout(1, 6));
+		menuBar    .setLayout(new GridLayout(1, 5));
+		frame.add(buttonPanel, BorderLayout.NORTH);
+	}
+
 
 	public static void main(String[] args) {
 		gui app = new gui();
