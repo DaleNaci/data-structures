@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
+import javax.swing.border.*;
 
 public class gui extends JPanel implements ActionListener {
 	JFrame 		frame;
@@ -16,10 +17,12 @@ public class gui extends JPanel implements ActionListener {
     JMenuItem 	background1, background2, background3;
     JMenuItem 	outline1, outline2, outline3, outline4;
     int 		size;
+	int[]		rgb;
     JMenu[] 	menuArr;
     JButton[] 	buttonArr;
     JMenuItem[] itemArr;
 	String		fontName;
+	Color		buttonColor;
 
 
 	public gui() {
@@ -62,9 +65,15 @@ public class gui extends JPanel implements ActionListener {
         outline3    =   new JMenuItem(     "Blue" );
         outline4    =   new JMenuItem(   "Random" );
 
+		rgb	=	new int[] {0, 0, 0};
+
+		buttonColor	=	new Color(0, 0, 0);
+
         menuArr     =   new JMenu[] 	{font, fontSize, textColor, background, outline};
         buttonArr   =   new JButton[]   {north, south, east, west, reset};
         itemArr     =   new JMenuItem[] {font1, font2, font3, size1, size2, size3, color1, color2, color3, background1, background2, background3, outline1, outline2, outline3, outline4};
+
+		area	=	new JTextArea();
 
 		frame.add(this);
 
@@ -122,11 +131,10 @@ public class gui extends JPanel implements ActionListener {
         menuBar.add( background );
         menuBar.add(    outline );
 
-
         north.setPreferredSize( new Dimension(10, 10) );
         south.setPreferredSize( new Dimension(10, 10) );
-        east.setPreferredSize(  new Dimension(10, 10) );
-        west.setPreferredSize(  new Dimension(10, 10) );
+        east. setPreferredSize( new Dimension(10, 10) );
+        west. setPreferredSize( new Dimension(10, 10) );
 
 
         menuBar.setLayout(new GridLayout(1, 5));
@@ -141,7 +149,8 @@ public class gui extends JPanel implements ActionListener {
 
 		restart();
 
-        frame.add(buttonPanel, BorderLayout.NORTH);
+        frame.add(buttonPanel, BorderLayout. NORTH);
+		frame.add(       area, BorderLayout.CENTER);
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1500,600);
@@ -186,28 +195,69 @@ public class gui extends JPanel implements ActionListener {
 		for (JMenu     menu :   menuArr) { menu.  setFont(new Font(fontName, Font.PLAIN, size)); }
         for (JButton button : buttonArr) { button.setFont(new Font(fontName, Font.PLAIN, size)); }
         for (JMenuItem item :   itemArr) { item.  setFont(new Font(fontName, Font.PLAIN, size)); }
+		area.setFont(new Font(fontName, Font.PLAIN, size));
+
+		if (e.getSource() == color1 || e.getSource() == color2) {
+			if (e.getSource() == color1) rgb = new int[] { 255,   0,   0};
+			if (e.getSource() == color2) rgb = new int[] {   0,   0, 255};
+			for (JMenu     menu :   menuArr) { menu.  setForeground(new Color(rgb[0], rgb[1], rgb[2])); }
+	        for (JButton button : buttonArr) { button.setForeground(new Color(rgb[0], rgb[1], rgb[2])); }
+	        for (JMenuItem item :   itemArr) { item.  setForeground(new Color(rgb[0], rgb[1], rgb[2])); }
+			area.setForeground(new Color(rgb[0], rgb[1], rgb[2]));
+		}
+		if (e.getSource() == color3) {
+			for (JMenu     menu :   menuArr) { menu.  setForeground(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255))); }
+			for (JButton button : buttonArr) { button.setForeground(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255))); }
+			for (JMenuItem item :   itemArr) { item.  setForeground(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255))); }
+			area.setForeground(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255)));
+		}
+
+		if (e.getSource() == background1) area.setBackground(new Color( 255,   0,   0));
+		if (e.getSource() == background2) area.setBackground(new Color(   0,   0, 255));
+		if (e.getSource() == background3) area.setBackground(new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255)));
+
+		if (e.getSource() == outline1) buttonColor = new Color( 255, 255, 255);
+		if (e.getSource() == outline2) buttonColor = new Color( 255,   0,   0);
+		if (e.getSource() == outline3) buttonColor = new Color(   0,   0, 255);
+		if (e.getSource() == outline4) buttonColor = new Color((int)(Math.random() * 255), (int)(Math.random() * 255), (int)(Math.random() * 255));
+
+		for (JButton button : buttonArr) { button.setBorder(new LineBorder(buttonColor)); }
+
+		if (e.getSource() == reset) restart();
+
 
 		font1.setFont(new Font(			 "Arial", Font.PLAIN, size));
 		font2.setFont(new Font("Times New Roman", Font.PLAIN, size));
 		font3.setFont(new Font(		   "Cambria", Font.PLAIN, size));
 
 
-		if (e.getSource() == reset) restart();
 
         frame.revalidate();
 	}
 
 	public void restart() {
-		fontName = "Arial";
-		size 	 = 		12;
+		fontName 	=	"Arial";
+		size 	 	=	12;
+		rgb      	=	new int[] {0, 0, 0};
+		buttonColor	=	new Color(0, 0, 0);
+
 
 		for (JMenu     menu :   menuArr) { menu.  setFont(new Font(fontName, Font.PLAIN, size)); }
         for (JButton button : buttonArr) { button.setFont(new Font(fontName, Font.PLAIN, size)); }
         for (JMenuItem item :   itemArr) { item.  setFont(new Font(fontName, Font.PLAIN, size)); }
 
+		for (JMenu     menu :   menuArr) { menu.  setForeground(new Color(0, 0, 0)); }
+		for (JButton button : buttonArr) { button.setForeground(new Color(0, 0, 0)); }
+		for (JMenuItem item :   itemArr) { item.  setForeground(new Color(0, 0, 0)); }
+
 		font1.setFont(new Font(			 "Arial", Font.PLAIN, size));
 		font2.setFont(new Font("Times New Roman", Font.PLAIN, size));
 		font3.setFont(new Font(		   "Cambria", Font.PLAIN, size));
+
+		for (JButton button : buttonArr) { button.setBorder(new LineBorder(buttonColor)); }
+
+		area.setText("");
+		area.setBackground(new Color(255, 255, 255));
 
 		frame.remove(buttonPanel);
 		buttonPanel.setLayout(new GridLayout(1, 6));
