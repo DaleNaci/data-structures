@@ -5,73 +5,73 @@ import java.util.*;
 import javax.swing.border.*;
 
 public class gui extends JPanel implements ActionListener {
-	JFrame 		frame;
-	JMenu 		font, fontSize, textColor, background, outline;
-    JMenuBar 	menuBar;
-	JButton 	north, south, east, west, reset;
-	JPanel 		buttonPanel;
-	JTextArea 	area;
-    JMenuItem 	font1, font2, font3;
-    JMenuItem 	size1, size2, size3;
-    JMenuItem 	color1, color2, color3;
-    JMenuItem 	background1, background2, background3;
-    JMenuItem 	outline1, outline2, outline3, outline4;
-    int 		size;
+	JFrame		frame;
+	JMenu		font, fontSize, textColor, background, outline;
+    JMenuBar	menuBar;
+	JButton		north, south, east, west, reset;
+	JPanel		buttonPanel;
+	JTextArea	area;
+    JMenuItem	font1, font2, font3;
+    JMenuItem	size1, size2, size3;
+    JMenuItem	color1, color2, color3;
+    JMenuItem	background1, background2, background3;
+    JMenuItem	outline1, outline2, outline3, outline4;
+    int			size;
 	int[]		rgb;
-    JMenu[] 	menuArr;
-    JButton[] 	buttonArr;
-    JMenuItem[] itemArr;
+    JMenu[]		menuArr;
+    JButton[]	buttonArr;
+    JMenuItem[]	itemArr;
 	String		fontName;
 	Color		buttonColor;
 
 
 	public gui() {
-		frame = new JFrame();
+		frame	=	new JFrame();
 
-		buttonPanel	= new JPanel();
+		buttonPanel	=	new JPanel();
 
-        north   =	new JButton( "NORTH" );
-        south   =	new JButton( "SOUTH" );
-        east    =	new JButton(  "EAST" );
-        west    =	new JButton(  "WEST" );
+        north	=	new JButton( "NORTH" );
+        south	=	new JButton( "SOUTH" );
+        east	=	new JButton(  "EAST" );
+        west	=	new JButton(  "WEST" );
 		reset	=	new JButton( "RESET" );
 
         menuBar	=	new JMenuBar();
 
-        font        =   new JMenu(      "Fonts" );
-        fontSize    =   new JMenu(      "Sizes" );
-        textColor   =   new JMenu(      "Color" );
-        background  =   new JMenu( "Background" );
-        outline     =   new JMenu(    "Outline" );
+        font		=	new JMenu(      "Fonts" );
+        fontSize	=	new JMenu(      "Sizes" );
+        textColor	=	new JMenu(      "Color" );
+        background	=	new JMenu( "Background" );
+        outline		=	new JMenu(    "Outline" );
 
-        font1   =   new JMenuItem(           "Arial" );
-        font2   =   new JMenuItem( "Times New Roman" );
-        font3   =   new JMenuItem(         "Cambria" );
+        font1	=	new JMenuItem(           "Arial" );
+        font2	=	new JMenuItem( "Times New Roman" );
+        font3	=	new JMenuItem(         "Cambria" );
 
-        size1   =   new JMenuItem( "10" );
-        size2   =   new JMenuItem( " 5" );
-        size3   =   new JMenuItem( "12" );
+        size1	=	new JMenuItem( "10" );
+        size2	=	new JMenuItem( " 5" );
+        size3	=	new JMenuItem( "12" );
 
-        color1  =   new JMenuItem(    "Red" );
-        color2  =   new JMenuItem(   "Blue" );
-        color3  =   new JMenuItem( "Random" );
+        color1	=	new JMenuItem(    "Red" );
+        color2	=	new JMenuItem(   "Blue" );
+        color3	=	new JMenuItem( "Random" );
 
-        background1 =   new JMenuItem(    "Red" );
-        background2 =   new JMenuItem(   "Blue" );
-        background3 =   new JMenuItem( "Random" );
+        background1	=	new JMenuItem(    "Red" );
+        background2	=	new JMenuItem(   "Blue" );
+        background3	=	new JMenuItem( "Random" );
 
-        outline1    =   new JMenuItem( "No Color" );
-        outline2    =   new JMenuItem(      "Red" );
-        outline3    =   new JMenuItem(     "Blue" );
-        outline4    =   new JMenuItem(   "Random" );
+        outline1	=	new JMenuItem( "No Color" );
+        outline2	=	new JMenuItem(      "Red" );
+        outline3	=	new JMenuItem(     "Blue" );
+        outline4	=	new JMenuItem(   "Random" );
 
 		rgb	=	new int[] {0, 0, 0};
 
 		buttonColor	=	new Color(0, 0, 0);
 
-        menuArr     =   new JMenu[] 	{font, fontSize, textColor, background, outline};
-        buttonArr   =   new JButton[]   {north, south, east, west, reset};
-        itemArr     =   new JMenuItem[] {font1, font2, font3, size1, size2, size3, color1, color2, color3, background1, background2, background3, outline1, outline2, outline3, outline4};
+        menuArr		=	new JMenu[] 	{font, fontSize, textColor, background, outline};
+        buttonArr	=	new JButton[]   {north, south, east, west, reset};
+        itemArr		=	new JMenuItem[] {font1, font2, font3, size1, size2, size3, color1, color2, color3, background1, background2, background3, outline1, outline2, outline3, outline4};
 
 		area	=	new JTextArea();
 
