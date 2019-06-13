@@ -41,7 +41,9 @@ public class Hero extends Character {
                 standImages[i]  =   ImageIO.read(new File("sprite/standing/frame-" + Integer.toString(i + 1) + ".png"));
             }
         } catch (IOException e) { }
-        currentImage = standImages[0];
+        currentImage    =   standImages[0];
+        width           =   standImages[0].getWidth();
+        height          =   standImages[0].getHeight();
     }
 
     public BufferedImage getImage(int i) {
